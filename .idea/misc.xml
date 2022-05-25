@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/LamThue/QuanLyBanHang/app/src/main/res/layout/activity_chi_tiet_hoa_don.xml" value="0.36666666666666664" />
+        <entry key="..\:/LamThue/QuanLyBanHang/app/src/main/res/layout/activity_main.xml" value="0.24537037037037038" />
+        <entry key="..\:/LamThue/QuanLyBanHang/app/src/main/res/layout/activity_quan_ly_ban_hang.xml" value="0.36666666666666664" />
+        <entry key="..\:/LamThue/QuanLyBanHang/app/src/main/res/layout/activity_quan_ly_san_pham.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
