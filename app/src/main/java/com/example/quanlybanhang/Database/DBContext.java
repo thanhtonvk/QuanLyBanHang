@@ -60,11 +60,12 @@ public class DBContext extends SQLiteOpenHelper {
 
     public void updateSanPham(SanPham sanPham, boolean isUpdate) {
         ContentValues values = new ContentValues();
-        values.put("id", sanPham.getId());
+
         values.put("tenSP", sanPham.getTenSP());
         values.put("loaiSP", sanPham.getLoaiSP());
         values.put("giaBan", sanPham.getGiaBan());
         if (isUpdate) {
+            values.put("id", sanPham.getId());
             database.update("SanPham", values, "id = ?", new String[]{sanPham.getId() + ""});
         } else {
             database.insert("SanPham", null, values);
