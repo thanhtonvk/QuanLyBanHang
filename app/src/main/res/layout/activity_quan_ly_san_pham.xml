@@ -8,8 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -39,6 +38,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Giá bán"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edt_soluong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số lượng"
             android:inputType="number" />
 
         <LinearLayout
@@ -71,7 +77,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:orientation="vertical">
 
         <AutoCompleteTextView

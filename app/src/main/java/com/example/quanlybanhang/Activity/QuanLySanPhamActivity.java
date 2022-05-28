@@ -20,7 +20,7 @@ import java.util.List;
 
 public class QuanLySanPhamActivity extends AppCompatActivity {
 
-    EditText edt_tensp, edt_loaisp, edt_giaban;
+    EditText edt_tensp, edt_loaisp, edt_giaban, edt_soluong;
     Button btn_them, btn_sua, btn_xoa;
     AutoCompleteTextView edt_timkiem;
     ListView lv_sanpham;
@@ -52,6 +52,10 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
             public void onClick(View view) {
                 SanPham sanPham = getSanPham();
                 dbContext.updateSanPham(sanPham, false);
+                edt_tensp.setText("");
+                edt_loaisp.setText("");
+                edt_giaban.setText("");
+                edt_soluong.setText("");
                 loadDuLieu();
             }
         });
@@ -62,6 +66,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
                 edt_tensp.setText(sanPham.getTenSP());
                 edt_loaisp.setText(sanPham.getLoaiSP());
                 edt_giaban.setText(sanPham.getGiaBan() + "");
+                edt_soluong.setText(sanPham.getSoLuong() + "");
             }
         });
         btn_sua.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +105,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         btn_xoa = findViewById(R.id.btn_xoa);
         edt_timkiem = findViewById(R.id.edt_timkiem);
         lv_sanpham = findViewById(R.id.lv_sanpham);
+        edt_soluong = findViewById(R.id.edt_soluong);
     }
 
     private SanPham getSanPham() {
@@ -107,6 +113,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         sanPham.setTenSP(edt_tensp.getText().toString());
         sanPham.setGiaBan(Integer.parseInt(edt_giaban.getText().toString()));
         sanPham.setLoaiSP(edt_loaisp.getText().toString());
+        sanPham.setSoLuong(Integer.parseInt(edt_soluong.getText().toString()));
         return sanPham;
     }
 }

@@ -61,6 +61,8 @@ public class QuanLyBanHangActivity extends AppCompatActivity {
                 hoaDon.setTenKH(edt_tenkh.getText().toString());
                 hoaDon.setNgayBan(edt_ngay.getText().toString());
                 db.addHoaDon(hoaDon);
+                edt_tenkh.setText("");
+                edt_ngay.setText("");
                 loadDuLieu();
             }
         });

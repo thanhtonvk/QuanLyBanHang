@@ -3,7 +3,7 @@ package com.example.quanlybanhang.Entity;
 public class SanPham {
     private int id;
     private String tenSP, loaiSP;
-    private int giaBan;
+    private int giaBan, soLuong;
 
     public SanPham() {
 
@@ -41,15 +41,24 @@ public class SanPham {
         this.giaBan = giaBan;
     }
 
-    public SanPham(int id, String tenSP, String loaiSP, int giaBan) {
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public SanPham(int id, String tenSP, String loaiSP, int giaBan, int soLuong) {
         this.id = id;
         this.tenSP = tenSP;
         this.loaiSP = loaiSP;
         this.giaBan = giaBan;
+        this.soLuong = soLuong;
     }
 
     @Override
     public String toString() {
-        return String.format(" Tên sản phẩm: %s \n Loại sản phẩm: %s \n Giá bán: %s", tenSP, loaiSP, giaBan);
+        return String.format(" Tên sản phẩm: %s \n Loại sản phẩm: %s \n Giá bán: %s \n Số lượng: %s", tenSP, loaiSP, giaBan, soLuong);
     }
 }

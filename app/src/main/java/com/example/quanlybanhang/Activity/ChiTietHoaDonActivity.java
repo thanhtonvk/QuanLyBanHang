@@ -82,6 +82,7 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
                 if (!edt_soluong.getText().toString().equals("")) {
                     db.addCTHoaDon(idHoaDon, sanPham.getId(), Integer.parseInt(edt_soluong.getText().toString()));
                     loadDuLieu();
+                    edt_soluong.setText("");
                 } else {
                     Toast.makeText(getApplicationContext(), "số lượng không đưuọc để rỗng", Toast.LENGTH_LONG).show();
                 }

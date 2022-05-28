@@ -29,7 +29,8 @@ public class DBContext extends SQLiteOpenHelper {
                 "id integer primary key autoincrement," +
                 "tenSP nvarchar(50)," +
                 "loaiSP nvarchar(50)," +
-                "giaBan int)");
+                "giaBan integer," +
+                "soluong integer)");
         sqLiteDatabase.execSQL("create table HoaDon(" +
                 "id integer primary key autoincrement," +
                 "tenKH nvarchar(100)," +
@@ -51,7 +52,7 @@ public class DBContext extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery("select * from SanPham", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            SanPham sanPham = new SanPham(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
+            SanPham sanPham = new SanPham(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4));
             sanPhamList.add(sanPham);
             cursor.moveToNext();
         }
@@ -64,6 +65,7 @@ public class DBContext extends SQLiteOpenHelper {
         values.put("tenSP", sanPham.getTenSP());
         values.put("loaiSP", sanPham.getLoaiSP());
         values.put("giaBan", sanPham.getGiaBan());
+        values.put("soLuong", sanPham.getSoLuong());
         if (isUpdate) {
             values.put("id", sanPham.getId());
             database.update("SanPham", values, "id = ?", new String[]{sanPham.getId() + ""});
@@ -90,7 +92,6 @@ public class DBContext extends SQLiteOpenHelper {
 
     public void addHoaDon(HoaDon hoaDon) {
         ContentValues values = new ContentValues();
-        values.put("id", hoaDon.getId());
         values.put("tenKH", hoaDon.getTenKH());
         values.put("ngayBan", hoaDon.getNgayBan());
         database.insert("HoaDon", null, values);
