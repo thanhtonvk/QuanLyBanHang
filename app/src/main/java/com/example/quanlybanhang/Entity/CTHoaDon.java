@@ -7,6 +7,15 @@ public class CTHoaDon {
     private int giaBan;
     private int soLuong;
     private int thanhTien;
+    private int idSP;
+
+    public int getIdSP() {
+        return idSP;
+    }
+
+    public void setIdSP(int idSP) {
+        this.idSP = idSP;
+    }
 
     public CTHoaDon(int id, int idHoaDon, String tenSP, int giaBan, int soLuong) {
         this.id = id;
@@ -66,6 +75,6 @@ public class CTHoaDon {
 
     @Override
     public String toString() {
-        return String.format(" Tên sản phẩm: %s \n Giá bán: %s \n Số lượng: %s \n Thành Tiền: %s", tenSP, giaBan, soLuong, getThanhTien());
+        return String.format(" Tên sản phẩm: %s \n Giá bán: %s \n Số lượng: %s \n Thành Tiền: %s vnđ", tenSP, giaBan, soLuong, getThanhTien());
     }
 }

@@ -59,6 +59,6 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return String.format(" Tên sản phẩm: %s \n Loại sản phẩm: %s \n Giá bán: %s \n Số lượng: %s", tenSP, loaiSP, giaBan, soLuong);
+        return String.format(" Tên sản phẩm: %s \n Loại sản phẩm: %s \n Giá bán: %s vnđ \n Số lượng: %s", tenSP, loaiSP, giaBan, soLuong);
     }
 }

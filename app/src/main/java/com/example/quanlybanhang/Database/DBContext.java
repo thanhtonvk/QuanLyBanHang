@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -17,10 +18,12 @@ import java.util.List;
 
 public class DBContext extends SQLiteOpenHelper {
     SQLiteDatabase database;
+    Context context;
 
     public DBContext(@Nullable Context context) {
         super(context, "csdl.sqlite", null, 1);
         database = getWritableDatabase();
+        this.context = context;
     }
 
     @Override
@@ -75,7 +78,12 @@ public class DBContext extends SQLiteOpenHelper {
     }
 
     public void deleteSanPham(int id) {
-        database.delete("SanPham", "id = ?", new String[]{id + ""});
+        if (check(id)) {
+            Toast.makeText(context, "Không thể xoá sản phẩm", Toast.LENGTH_LONG).show();
+        } else {
+            database.delete("SanPham", "id = ?", new String[]{id + ""});
+        }
+
     }
 
     public List<HoaDon> getAllHoaDons() {
@@ -116,6 +124,27 @@ public class DBContext extends SQLiteOpenHelper {
         values.put("idSP", idSanPham);
         values.put("soLuong", soLuong);
         database.insert("CTHoaDon", null, values);
+    }
+
+    public List<CTHoaDon> getAllCTHoaDon() {
+        List<CTHoaDon> ctHoaDonList = new ArrayList<>();
+        Cursor cursor = database.rawQuery("select CTHoaDon.id,CTHoaDon.idHoaDon,SanPham.tenSP,SanPham.giaBan,CTHoaDon.soLuong,SanPham.id from CTHoaDon,SanPham where SanPham.id = CTHoaDon.idSP", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            CTHoaDon ctHoaDon = new CTHoaDon(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4));
+            ctHoaDon.setIdSP(cursor.getInt(5));
+            ctHoaDonList.add(ctHoaDon);
+            cursor.moveToNext();
+        }
+        return ctHoaDonList;
+    }
+
+    public boolean check(int idSP) {
+        boolean flag = false;
+        for (CTHoaDon ctHoaDon : getAllCTHoaDon()) {
+            if (idSP == ctHoaDon.getIdSP()) flag = true;
+        }
+        return flag;
     }
 
 }

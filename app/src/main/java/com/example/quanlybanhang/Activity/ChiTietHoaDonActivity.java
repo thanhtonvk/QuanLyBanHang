@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
     int idHoaDon;
     SanPham sanPham;
     List<SanPham> sanPhamList;
+    TextView tv_tongtien;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
         db = new DBContext(getApplicationContext());
         sp_sanpham = findViewById(R.id.sp_sanpham);
         edt_timkiem = findViewById(R.id.edt_timkiem);
+        tv_tongtien = findViewById(R.id.tv_tongtien);
     }
 
     private void loadDuLieu() {
@@ -62,6 +65,15 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
         spAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, sanPhamList);
         sp_sanpham.setAdapter(spAdapter);
         edt_timkiem.setAdapter(adapter);
+        tv_tongtien.setText("Tổng tiền: " + tongTien() +"vnd");
+    }
+
+    private int tongTien() {
+        int tong = 0;
+        for (CTHoaDon ctHoaDon : ctHoaDonList) {
+            tong += ctHoaDon.getThanhTien();
+        }
+        return tong;
     }
 
     private void onClick() {
